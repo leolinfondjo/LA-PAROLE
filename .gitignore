@@ -1,0 +1,14 @@
+# Dépendances Node (si utilisées)
+node_modules/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers d'éditeurs
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log

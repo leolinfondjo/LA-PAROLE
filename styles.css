@@ -1,0 +1,1091 @@
+/* ==========================================================================
+   SITE VITRINE - LA PAROLE (LOGE N° 5385, GODF, YAOUNDÉ)
+   DESIGN SYSTEM & STYLESHEET
+   ========================================================================== */
+
+/* --- Variables Globales (Mode Sombre — défaut) --- */
+:root {
+    /* Palette Chromatique Sombre */
+    --bg-primary: #0D0D0D;       /* Noir profond */
+    --bg-secondary: #111111;     /* Gris très sombre */
+    --bg-card: #161616;          /* Gris anthracite des cartes */
+    --bg-input: #141414;         /* Fond des formulaires */
+    --bg-footer: #000000;        /* Fond footer */
+    --bg-drawer: #080808;        /* Fond drawer mobile */
+    --bg-nav: rgba(13, 13, 13, 0.92);     /* Fond navbar */
+    --bg-nav-scrolled: rgba(13, 13, 13, 0.97);
+    
+    --text-primary: #E8E0D0;     /* Ivoire / blanc cassé */
+    --text-secondary: #C2BBB0;   /* Muted ivoire pour lecture prolongée */
+    --text-muted: #777777;       /* Gris pour le footer et détails secondaires */
+    
+    --accent-gold: #C9A84C;      /* Or mat */
+    --accent-gold-hover: #E3C268;/* Or mat plus brillant pour hovers */
+    --border-color: #2A2A2A;     /* Séparateurs & bordures */
+    --input-focus-bg: #171717;   /* Fond input au focus */
+    
+    /* Typographies */
+    --font-title: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    
+    /* Espacements & transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition-fast: all 0.2s ease;
+    
+    /* Layout heights */
+    --header-height: 80px;
+}
+
+/* =========================================================
+   MODE CLAIR — surcharge des variables via html.light-mode
+   Palette : parchemin ivoire, encre sombre, or foncé
+   ========================================================= */
+html.light-mode {
+    --bg-primary: #F5F0E8;       /* Parchemin ivoire chaud */
+    --bg-secondary: #EDE8DF;     /* Parchemin légèrement plus sombre */
+    --bg-card: #E8E2D8;          /* Cartes ivoire */
+    --bg-input: #FAF7F2;         /* Champs de formulaire */
+    --bg-footer: #1A1712;        /* Footer sombre conservé (contraste) */
+    --bg-drawer: #F0EBE2;        /* Drawer mobile clair */
+    --bg-nav: rgba(245, 240, 232, 0.94);
+    --bg-nav-scrolled: rgba(245, 240, 232, 0.98);
+    
+    --text-primary: #1C1712;     /* Encre sombre, quasi-noir */
+    --text-secondary: #3D3628;   /* Encre brun-sombre */
+    --text-muted: #888070;       /* Muted warm pour détails */
+    
+    --accent-gold: #7A5E1A;      /* Or foncé (contraste sur fond clair) */
+    --accent-gold-hover: #9A7820;/* Or foncé hover */
+    --border-color: #D4CBB8;     /* Bordures parchemin */
+    --input-focus-bg: #FDF9F3;   /* Fond input focus mode clair */
+}
+
+/* --- Réinitialisation & Styles de Base --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.8;
+    overflow-x: hidden;
+    background-color: var(--bg-primary);
+}
+
+/* --- Mise en Page & Conteneurs --- */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.container-narrow {
+    max-width: 780px;
+}
+
+section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- Typographie Générique --- */
+h1, h2, h3, h4 {
+    font-family: var(--font-title);
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+h2.section-title {
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-variant: all-small-caps;
+    letter-spacing: 0.18em;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    position: relative;
+}
+
+h2.section-title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 1px;
+    background-color: var(--accent-gold);
+    margin: 15px auto 0 auto;
+}
+
+p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--accent-gold-hover);
+}
+
+/* Focus Outline global */
+a:focus-visible, 
+button:focus-visible, 
+input:focus-visible, 
+textarea:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 4px;
+}
+
+/* --- Barre de Navigation --- */
+.navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--bg-nav);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    transition: var(--transition-smooth);
+}
+
+.navbar-container.scrolled {
+    height: 70px;
+    background-color: var(--bg-nav-scrolled);
+}
+
+.navbar-content {
+    width: 90%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.nav-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.logo-title {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    text-transform: uppercase;
+    font-variant: all-small-caps;
+}
+
+.logo-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.nav-menu-desktop {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-variant: all-small-caps;
+    letter-spacing: 0.15em;
+    color: var(--text-primary);
+    position: relative;
+    padding: 5px 0;
+    font-weight: 500;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent-gold);
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--accent-gold);
+}
+
+/* --- Groupe de contrôles nav (toggle + hamburger) --- */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+/* Bouton Bascule Thème (Lune / Soleil) */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--accent-gold);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent-gold);
+    background-color: rgba(201, 168, 76, 0.08);
+    transform: rotate(15deg);
+}
+
+/* Icônes Lune et Soleil — alternance selon le mode */
+.theme-toggle .icon-sun {
+    display: none;
+}
+
+html.light-mode .theme-toggle .icon-moon {
+    display: none;
+}
+
+html.light-mode .theme-toggle .icon-sun {
+    display: block;
+}
+
+html.light-mode .theme-toggle {
+    color: var(--accent-gold);
+}
+
+/* Hamburger mobile */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1010;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--accent-gold);
+    transition: var(--transition-smooth);
+}
+
+/* Mobile Drawer (Menu latéral) */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: var(--bg-drawer);
+    border-left: 1px solid var(--border-color);
+    z-index: 999;
+    padding: 120px 2.5rem 2rem 2.5rem;
+    transition: var(--transition-smooth);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-drawer.open {
+    right: 0;
+}
+
+.nav-menu-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.mobile-nav-link {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-variant: all-small-caps;
+    letter-spacing: 0.18em;
+    color: var(--text-primary);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.mobile-nav-link:hover {
+    color: var(--accent-gold);
+}
+
+/* Animation hamburger actif */
+.hamburger-btn[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-btn[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* --- 1. HERO SECTION --- */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    color: var(--text-primary);
+    z-index: 1;
+}
+
+.hero-parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -2;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.76);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.6) 0%, rgba(13, 13, 13, 0.95) 90%);
+    z-index: -1;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: calc(var(--header-height) / 2);
+}
+
+.hero-supratitle {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-size: 4.8rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-variant: all-small-caps;
+    color: #FFFFFF;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.hero-motto {
+    font-family: var(--font-title);
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--accent-gold);
+    margin-bottom: 3.5rem;
+}
+
+.btn-cta {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+    background: transparent;
+    transition: var(--transition-smooth);
+}
+
+.btn-cta:hover {
+    background-color: var(--accent-gold);
+    color: #000000;
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(201, 168, 76, 0.15);
+}
+
+
+/* --- 2. WELCOME / ACCUEIL SECTION --- */
+.section-welcome {
+    background-color: var(--bg-primary);
+}
+
+.section-welcome .section-text {
+    text-align: justify;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+/* Filigrane Maçonnique standard */
+.filigrane-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.filigrane-compass {
+    background-image: url('assets/filigrane-sec2.png');
+    background-attachment: fixed;
+}
+
+
+/* --- SEPARATEURS DE SECTION --- */
+.masonic-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    max-width: 400px;
+    margin: 0 auto;
+    height: 24px;
+}
+
+.separator-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.separator-icon {
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* --- 3. ABOUT US SECTION --- */
+.section-about {
+    background-color: var(--bg-secondary);
+}
+
+.intro-paragraph {
+    font-size: 1.15rem;
+    text-align: justify;
+    line-height: 1.9;
+    margin-bottom: 3.5rem;
+}
+
+.grid-about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.about-block {
+    border-left: 2px solid var(--accent-gold);
+    padding-left: 1.5rem;
+}
+
+.block-title {
+    font-size: 1.45rem;
+    color: var(--accent-gold);
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    font-variant: all-small-caps;
+    letter-spacing: 0.08em;
+}
+
+.about-list {
+    list-style: none;
+}
+
+.about-list li {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+    position: relative;
+}
+
+.bullet {
+    color: var(--accent-gold);
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+.final-paragraph {
+    text-align: justify;
+    margin-top: 1rem;
+}
+
+
+/* --- 4. WHY "LA PAROLE" SECTION --- */
+.section-why {
+    background-color: var(--bg-primary);
+}
+
+.filigrane-scroll {
+    background-image: url('assets/filigrane-sec4.png');
+    background-attachment: fixed;
+}
+
+.section-why .section-text {
+    text-align: justify;
+}
+
+
+/* --- 5. HISTORIQUE / RACINES SECTION --- */
+.section-history {
+    background-color: var(--bg-secondary);
+}
+
+.grid-history {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.2rem;
+}
+
+.history-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2.8rem;
+    transition: var(--transition-smooth);
+}
+
+.history-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+    font-variant: all-small-caps;
+    letter-spacing: 0.08em;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.card-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 25px;
+    height: 1px;
+    background-color: var(--accent-gold);
+}
+
+.card-text {
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    text-align: justify;
+    margin-bottom: 0;
+}
+
+
+/* --- 6. DEVISE INTERLUDE SECTION --- */
+.section-motto-interlude {
+    background-color: #000000;
+    padding: 120px 0;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* En mode clair, l'interlude reste noir absolu (contraste dramatique intentionnel) */
+html.light-mode .section-motto-interlude {
+    background-color: #0D0B08;
+}
+html.light-mode .motto-quote {
+    color: #F5F0E8;
+    text-shadow: none;
+}
+
+/* Texture Grain SVG/CSS subtil pour l'interlude */
+.motto-grain-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.035;
+    pointer-events: none;
+    /* Génération de bruit en pur SVG via data URL pour éviter les images externes */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    z-index: 1;
+}
+
+.motto-content {
+    position: relative;
+    z-index: 2;
+}
+
+.motto-icon {
+    margin-bottom: 2rem;
+}
+
+.motto-quote {
+    font-family: var(--font-title);
+    font-style: italic;
+    font-size: 2.4rem;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+    line-height: 1.4;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.motto-signature {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-style: normal;
+}
+
+
+/* --- 7. CONTACT FORM SECTION --- */
+.section-contact {
+    background-color: var(--bg-primary);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: -2.5rem;
+    margin-bottom: 4rem;
+}
+
+.contact-form {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    transition: var(--transition-smooth);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.required {
+    color: var(--accent-gold);
+}
+
+.form-group input,
+.form-group textarea {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.9rem 1.2rem;
+    width: 100%;
+    transition: var(--transition-fast);
+}
+
+.form-group input:hover,
+.form-group textarea:hover {
+    border-color: rgba(201, 168, 76, 0.4);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    background-color: var(--input-focus-bg);
+}
+
+.form-submit-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-submit {
+    padding: 1rem 2.5rem;
+    background: transparent;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    width: 100%;
+    max-width: 300px;
+}
+
+.btn-submit:hover {
+    background-color: var(--accent-gold);
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201, 168, 76, 0.15);
+}
+
+/* Confirmation Success Screen */
+.form-success-message {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--accent-gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    transition: var(--transition-smooth);
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    background-color: rgba(201, 168, 76, 0.05);
+}
+
+.form-success-message h3 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-variant: all-small-caps;
+    letter-spacing: 0.08em;
+}
+
+.form-success-message p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.btn-reset-form {
+    margin-top: 1rem;
+    padding: 0.6rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.btn-reset-form:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+
+/* --- 8. FOOTER --- */
+.footer-container {
+    background-color: var(--bg-footer);
+    border-top: 1px solid var(--border-color);
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* En mode clair, le footer reste sombre pour le contraste */
+html.light-mode .footer-container {
+    border-top-color: #2A2A2A;
+}
+html.light-mode .footer-line { color: #888; }
+html.light-mode .footer-link { color: #888; }
+html.light-mode .footer-link:hover { color: var(--accent-gold); }
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-line {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 0;
+}
+
+.footer-link {
+    color: var(--text-muted);
+    border-bottom: 1px solid transparent;
+    transition: var(--transition-fast);
+}
+
+.footer-link:hover {
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+}
+
+.footer-copyright {
+    margin-top: 0.8rem;
+    opacity: 0.7;
+}
+
+
+/* --- COMPORTEMENT D'ANIMATION (SCROLL REVEAL) --- */
+.reveal-item,
+.history-card,
+.about-block {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+
+/* Quand la section est active, révéler les enfants */
+.reveal-visible .reveal-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Cartes et blocs à révélation autonome */
+.reveal-card-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+
+/* --- RESPONSIVITÉ & ACCESSIBILITÉ --- */
+
+/* Désactivation Parallaxe (Accessibilité / Performance) */
+@media (max-width: 768px) {
+    .hero-parallax-bg {
+        background-attachment: scroll !important;
+    }
+    
+    .filigrane-compass,
+    .filigrane-scroll {
+        background-attachment: scroll !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-delay: 0s !important;
+        animation-duration: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0s !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .hero-parallax-bg,
+    .filigrane-compass,
+    .filigrane-scroll {
+        background-attachment: scroll !important;
+    }
+
+    .reveal-item,
+    .history-card,
+    .about-block {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* Media Queries Layouts */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 3.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-motto {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --header-height: 70px;
+    }
+    
+    section {
+        padding: 70px 0;
+    }
+    
+    h2.section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .nav-menu-desktop {
+        display: none;
+    }
+    
+    .hamburger-btn {
+        display: flex;
+    }
+
+    .theme-toggle {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-supratitle {
+        font-size: 0.75rem;
+        letter-spacing: 0.25em;
+    }
+    
+    .hero-motto {
+        font-size: 1.15rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .grid-about {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .grid-history {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .history-card {
+        padding: 2rem;
+    }
+    
+    .motto-quote {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.4rem;
+    }
+    
+    .hero-supratitle {
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+    }
+    
+    .btn-cta {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.75rem;
+    }
+
+    .form-success-message h3 {
+        font-size: 1.4rem;
+    }
+}

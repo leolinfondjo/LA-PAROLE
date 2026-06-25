@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Parole — Respectable Loge n° 5385 (GODF), Yaoundé</title>
+    <meta name="description" content="Site vitrine de la Respectable Loge La Parole, Loge mixte n° 5385 du Grand Orient de France à l'Orient de Yaoundé (Cameroun). Un espace de réflexion maçonnique humaniste.">
+    <!-- Google Fonts: Cormorant Garamond (Serif) & Inter (Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Barre de Navigation Sticky -->
+    <header class="navbar-container" id="main-header">
+        <div class="navbar-content">
+            <a href="#hero" class="nav-logo" id="logo-link">
+                <span class="logo-title">La Parole</span>
+                <span class="logo-subtitle">GODF · n° 5385</span>
+            </a>
+            
+            <nav class="nav-menu-desktop" aria-label="Navigation principale">
+                <a href="#welcome" class="nav-link">Accueil</a>
+                <a href="#about" class="nav-link">À propos</a>
+                <a href="#history" class="nav-link">Histoire</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-controls">
+                <!-- Bouton bascule Sombre / Clair -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="Basculer vers le mode clair" title="Basculer le thème">
+                    <!-- Icône Lune (mode sombre actif) -->
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <!-- Icône Soleil (mode clair actif) -->
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+
+                <button class="hamburger-btn" aria-label="Ouvrir le menu mobile" aria-expanded="false" id="hamburger-toggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Drawer Mobile -->
+    <div class="mobile-drawer" id="mobile-menu-drawer" aria-hidden="true">
+        <nav class="nav-menu-mobile" aria-label="Navigation mobile">
+            <a href="#welcome" class="mobile-nav-link">Accueil</a>
+            <a href="#about" class="mobile-nav-link">À propos</a>
+            <a href="#history" class="mobile-nav-link">Histoire</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+        </nav>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- 1. HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="hero-parallax-bg" id="hero-bg-elem"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <span class="hero-supratitle reveal-item">Orient de Yaoundé — Cameroun</span>
+                <h1 class="hero-title reveal-item">La Parole</h1>
+                <p class="hero-subtitle reveal-item">Loge n° 5385 du Grand Orient de France</p>
+                <p class="hero-motto reveal-item">« Par la Parole, construire l'Humain. »</p>
+                <a href="#welcome" class="btn-cta reveal-item" id="cta-button">Nous découvrir ↓</a>
+            </div>
+        </section>
+
+        <!-- 2. WELCOME / ACCUEIL SECTION -->
+        <section id="welcome" class="section-welcome">
+            <div class="filigrane-bg filigrane-compass"></div>
+            <div class="container container-narrow reveal-group">
+                <h2 class="section-title reveal-item">Bienvenue</h2>
+                <div class="section-text reveal-item">
+                    <p>Bienvenue sur le site de la Respectable Loge La Parole, Loge n° 5385 du Grand Orient de France, à l'Orient de Yaoundé.</p>
+                    <p>Fondée en 2015, notre Loge est née de la volonté de faire vivre au Cameroun une franc-maçonnerie ouverte, humaniste et mixte, fidèle aux valeurs portées par le Grand Orient de France.</p>
+                    <p>Dans un contexte où les Loges du GODF présentes au Cameroun étaient alors exclusivement masculines, La Parole a constitué une étape importante dans l'histoire de l'obédience en Afrique centrale en offrant un espace initiatique où femmes et hommes peuvent travailler ensemble dans un esprit d'égalité, de respect mutuel et de fraternité.</p>
+                    <p>Notre Loge pratique le Rite Français et le Régime Écossais Rectifié. Elle réunit des sœurs et des frères de générations diverses qui conjuguent l'expérience des aînés, la créativité des plus jeunes et la richesse de parcours humains variés.</p>
+                    <p>Adogmatique et attachée à la liberté absolue de conscience, La Parole constitue un lieu privilégié de réflexion, d'étude symbolique et d'engagement humaniste. Elle œuvre à la fois au perfectionnement moral et intellectuel de ses membres et à la réflexion sur les défis auxquels sont confrontées nos sociétés contemporaines.</p>
+                    <p>Parce que la parole est à la fois transmission, dialogue, écoute et construction collective, notre Loge a choisi d'en faire son signe distinctif et son exigence quotidienne.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEPARATOR 1 -->
+        <div class="masonic-separator" aria-hidden="true">
+            <div class="separator-line"></div>
+            <div class="separator-icon">
+                <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 15 L20 85 M50 15 L80 85" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M15 45 L50 78 L85 45" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="separator-line"></div>
+        </div>
+
+        <!-- 3. ABOUT US SECTION -->
+        <section id="about" class="section-about">
+            <div class="container reveal-group">
+                <h2 class="section-title reveal-item">À propos de nous</h2>
+                
+                <p class="intro-paragraph reveal-item">
+                    La Respectable Loge La Parole est une Loge du Grand Orient de France travaillant à l'Orient de Yaoundé depuis 2015. Elle a été créée afin d'incarner et de promouvoir la mixité au sein du GODF au Cameroun, dans le prolongement des évolutions majeures de l'obédience en faveur de l'égalité entre les femmes et les hommes. Notre Loge accueille des femmes et des hommes libres et de bonnes mœurs, issus de sensibilités philosophiques, culturelles, professionnelles et spirituelles diverses. Cette pluralité constitue l'une de nos principales richesses.
+                </p>
+
+                <div class="grid-about reveal-item">
+                    <!-- Bloc 1 -->
+                    <div class="about-block">
+                        <h3 class="block-title">Nos traditions initiatiques</h3>
+                        <ul class="about-list">
+                            <li><span class="bullet">—</span> <strong>Le Rite Français</strong>, héritier de la tradition maçonnique française et porteur d'une forte dimension humaniste.</li>
+                            <li><span class="bullet">—</span> <strong>Le Régime Écossais Rectifié</strong>, voie initiatique centrée sur la quête intérieure, l'éthique et le perfectionnement de soi.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Bloc 2 -->
+                    <div class="about-block">
+                        <h3 class="block-title">Nos axes de travail</h3>
+                        <ul class="about-list">
+                            <li><span class="bullet">—</span> L'étude des symboles, des rituels et de la démarche initiatique.</li>
+                            <li><span class="bullet">—</span> La réflexion sur les enjeux sociaux, culturels, éthiques et citoyens qui concernent le Cameroun, l'Afrique et le monde contemporain.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="final-paragraph reveal-item">
+                    La Parole se veut un laboratoire d'idées, un lieu d'écoute et de dialogue où les différences ne divisent pas mais enrichissent la réflexion commune. Notre ambition est de contribuer à l'édification d'une société plus juste, plus fraternelle et plus éclairée, en mettant au service de la cité les enseignements tirés du travail maçonnique.
+                </p>
+            </div>
+        </section>
+
+        <!-- SEPARATOR 2 -->
+        <div class="masonic-separator" aria-hidden="true">
+            <div class="separator-line"></div>
+            <div class="separator-icon">
+                <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 15 L20 85 M50 15 L80 85" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M15 45 L50 78 L85 45" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="separator-line"></div>
+        </div>
+
+        <!-- 4. WHY "LA PAROLE" SECTION -->
+        <section id="why-la-parole" class="section-why">
+            <div class="filigrane-bg filigrane-scroll"></div>
+            <div class="container container-narrow reveal-group">
+                <h2 class="section-title reveal-item">Pourquoi « La Parole » ?</h2>
+                <div class="section-text reveal-item">
+                    <p>Le choix du signe distinctif « La Parole » n'est pas anodin.</p>
+                    <p>Dans toutes les traditions initiatiques, la parole occupe une place centrale. Elle est l'instrument par lequel se transmettent les connaissances, se construisent les fraternités et se partage la quête de sens.</p>
+                    <p>La parole authentique exige l'écoute, la sincérité, la maîtrise de soi et le respect d'autrui. Elle permet à chacun d'exprimer sa pensée tout en s'enrichissant de celle des autres.</p>
+                    <p>Au sein de notre Loge, la parole est considérée comme un outil d'élévation personnelle et collective. Elle n'est ni domination ni affirmation de soi, mais recherche commune de la vérité.</p>
+                    <p>Dans une société souvent marquée par les divisions, les préjugés et les certitudes, nous faisons le choix d'une parole libre, responsable, fraternelle et constructive.</p>
+                    <p>C'est dans cet esprit que la Loge La Parole poursuit son œuvre depuis sa création à l'Orient de Yaoundé.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEPARATOR 3 -->
+        <div class="masonic-separator" aria-hidden="true">
+            <div class="separator-line"></div>
+            <div class="separator-icon">
+                <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 15 L20 85 M50 15 L80 85" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M15 45 L50 78 L85 45" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="separator-line"></div>
+        </div>
+
+        <!-- 5. HISTORIQUE / RACINES SECTION -->
+        <section id="history" class="section-history">
+            <div class="container reveal-group">
+                <h2 class="section-title reveal-item">Nos racines historiques</h2>
+                
+                <div class="grid-history reveal-item">
+                    <!-- Bloc 1 -->
+                    <article class="history-card">
+                        <h3 class="card-title">Le Grand Orient de France</h3>
+                        <p class="card-text">Le Grand Orient de France est officiellement constitué en 1773 à Paris à partir de la réorganisation de la première Grande Loge de France. Il est aujourd'hui la plus importante obédience maçonnique d'Europe continentale. Fidèle aux principes de liberté, d'égalité, de fraternité et de laïcité, il place la liberté absolue de conscience au cœur de son projet. Depuis plus de deux siècles, ses membres participent aux réflexions philosophiques, humanistes et citoyennes qui accompagnent l'évolution des sociétés modernes.</p>
+                    </article>
+
+                    <!-- Bloc 2 -->
+                    <article class="history-card">
+                        <h3 class="card-title">Le Rite Français</h3>
+                        <p class="card-text">Le Rite Français est le rite historique du Grand Orient de France. Codifié à la fin du XVIIIᵉ siècle, il se distingue par sa simplicité rituelle, sa profondeur symbolique et son orientation humaniste. Il invite le franc-maçon à développer son esprit critique, son autonomie de pensée et son engagement au service du progrès humain.</p>
+                    </article>
+
+                    <!-- Bloc 3 -->
+                    <article class="history-card">
+                        <h3 class="card-title">Le Régime Écossais Rectifié</h3>
+                        <p class="card-text">Le Régime Écossais Rectifié est élaboré à la fin du XVIIIᵉ siècle sous l'impulsion de Jean-Baptiste Willermoz. Cette voie initiatique met particulièrement l'accent sur la transformation intérieure, la bienfaisance, la responsabilité morale et la recherche d'une harmonie entre l'homme et le monde.</p>
+                    </article>
+
+                    <!-- Bloc 4 -->
+                    <article class="history-card">
+                        <h3 class="card-title">La mixité au Grand Orient de France</h3>
+                        <p class="card-text">L'ouverture du Grand Orient de France à la mixité constitue l'une des évolutions majeures de son histoire récente. Après plusieurs décennies de débats, les Loges du GODF ont progressivement acquis la possibilité d'initier et d'affilier des femmes dans les mêmes conditions que les hommes. Cette évolution a consacré le principe selon lequel l'égalité entre les êtres humains devait pleinement trouver sa place dans la démarche maçonnique. Créée en 2015, la Loge La Parole s'inscrit directement dans cette dynamique et représente l'une des expressions de cette mixité au sein du GODF sur le continent africain.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. DEVISE INTERLUDE SECTION -->
+        <section class="section-motto-interlude" id="motto-interlude">
+            <div class="motto-grain-overlay"></div>
+            <div class="container motto-content reveal-group">
+                <div class="motto-icon reveal-item">
+                    <!-- Grand ornement compas et équerre -->
+                    <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 15 L20 85 M50 15 L80 85" stroke="#C9A84C" stroke-width="4.5" stroke-linecap="round"/>
+                        <path d="M15 45 L50 78 L85 45" stroke="#C9A84C" stroke-width="4.5" stroke-linecap="round"/>
+                        <circle cx="50" cy="46" r="3" fill="#C9A84C"/>
+                    </svg>
+                </div>
+                <blockquote class="motto-quote reveal-item">
+                    « Par la Parole, construire l'Humain. »
+                </blockquote>
+                <cite class="motto-signature reveal-item">
+                    — La Respectable Loge La Parole · Loge n° 5385 · GODF · Orient de Yaoundé
+                </cite>
+            </div>
+        </section>
+
+        <!-- 7. CONTACT FORM SECTION -->
+        <section id="contact" class="section-contact">
+            <div class="container container-narrow reveal-group">
+                <h2 class="section-title reveal-item">Nous contacter</h2>
+                <p class="section-subtitle reveal-item">Vous souhaitez en savoir davantage sur notre Loge ? Nous vous invitons à nous écrire.</p>
+                
+                <form action="https://formspree.io/leolinfondjo@gmail.com" method="POST" class="contact-form reveal-item" id="lodge-contact-form">
+                    <!-- Formspree: les messages seront envoyés à leolinfondjo@gmail.com -->
+                    <input type="hidden" name="_subject" value="[La Parole] Nouveau message de contact">
+                    <input type="hidden" name="_next" value="http://localhost:8080/#contact">
+                    <input type="hidden" name="_language" value="fr">
+                    
+                    <div class="form-group">
+                        <label for="full-name">Nom complet <span class="required">*</span></label>
+                        <input type="text" id="full-name" name="name" required placeholder="Votre nom et prénom">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email-address">Adresse e-mail <span class="required">*</span></label>
+                        <input type="email" id="email-address" name="email" required placeholder="nom@exemple.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="msg-subject">Objet du message <span class="required">*</span></label>
+                        <input type="text" id="msg-subject" name="_subject" required placeholder="Sujet de votre demande">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message-content">Message <span class="required">*</span></label>
+                        <textarea id="message-content" name="message" rows="7" required placeholder="Écrivez votre message ici... (minimum 6 lignes)"></textarea>
+                    </div>
+
+                    <div class="form-submit-container">
+                        <button type="submit" class="btn-submit" id="submit-btn">Envoyer le message</button>
+                    </div>
+                </form>
+
+                <!-- Écran de confirmation sobre -->
+                <div class="form-success-message" id="success-screen" aria-hidden="true" style="display: none;">
+                    <div class="success-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Votre message a bien été transmis.</h3>
+                    <p>Nous vous répondrons dans les meilleurs délais.</p>
+                    <button type="button" class="btn-reset-form" id="back-to-form-btn">Écrire un autre message</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 8. FOOTER -->
+    <footer class="footer-container">
+        <div class="container footer-content">
+            <p class="footer-line">La Respectable Loge La Parole · Loge n° 5385</p>
+            <p class="footer-line">Grand Orient de France · Orient de Yaoundé, Cameroun</p>
+            <p class="footer-line"><a href="https://www.godf.org" target="_blank" rel="noopener" class="footer-link">www.godf.org</a></p>
+            <p class="footer-line footer-copyright">© 2025 — Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
