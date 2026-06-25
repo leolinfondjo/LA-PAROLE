@@ -215,6 +215,102 @@ textarea:focus-visible {
     margin-top: 2px;
 }
 
+/* --- Logos de la Loge --- */
+
+/* Layout nav-logo flex-row */
+.nav-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8rem;
+    justify-content: flex-start;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.nav-logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Logo dans la Navbar */
+.nav-logo-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 50%;
+    filter: invert(1) brightness(0.85);
+    transition: var(--transition-smooth);
+    flex-shrink: 0;
+}
+
+html.light-mode .nav-logo-img {
+    filter: none;
+    opacity: 0.85;
+}
+
+.nav-logo:hover .nav-logo-img {
+    filter: invert(1) brightness(1) sepia(0.5) hue-rotate(10deg) saturate(2);
+    transform: rotate(5deg);
+}
+
+html.light-mode .nav-logo:hover .nav-logo-img {
+    filter: none;
+    opacity: 1;
+    transform: rotate(5deg);
+}
+
+/* Logo Hero — Médaillon */
+.hero-logo-medallion {
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.hero-logo-img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    border-radius: 50%;
+    filter: invert(1) brightness(0.9);
+    box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.3),
+                0 0 30px rgba(201, 168, 76, 0.08),
+                0 0 60px rgba(201, 168, 76, 0.04);
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    transition: var(--transition-smooth);
+}
+
+.hero-logo-img:hover {
+    box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.5),
+                0 0 40px rgba(201, 168, 76, 0.15);
+    transform: scale(1.03);
+}
+
+/* Logo Footer */
+.footer-logo-wrap {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-logo-img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 50%;
+    filter: invert(1) brightness(0.5);
+    opacity: 0.5;
+    transition: var(--transition-fast);
+}
+
+.footer-logo-img:hover {
+    opacity: 0.75;
+    filter: invert(1) brightness(0.7);
+}
+
 .nav-menu-desktop {
     display: flex;
     gap: 2.5rem;
