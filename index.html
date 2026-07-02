@@ -13,6 +13,9 @@
 </head>
 <body>
 
+    <!-- Barre de progression de lecture -->
+    <div id="scroll-progress-bar" class="scroll-progress" aria-hidden="true"></div>
+
     <!-- Barre de Navigation Sticky -->
     <header class="navbar-container" id="main-header">
         <div class="navbar-content">
@@ -28,6 +31,7 @@
                 <a href="#welcome" class="nav-link">Accueil</a>
                 <a href="#about" class="nav-link">À propos</a>
                 <a href="#history" class="nav-link">Histoire</a>
+                <a href="#faq" class="nav-link">FAQ</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
 
@@ -67,6 +71,7 @@
             <a href="#welcome" class="mobile-nav-link">Accueil</a>
             <a href="#about" class="mobile-nav-link">À propos</a>
             <a href="#history" class="mobile-nav-link">Histoire</a>
+            <a href="#faq" class="mobile-nav-link">FAQ</a>
             <a href="#contact" class="mobile-nav-link">Contact</a>
         </nav>
     </div>
@@ -247,6 +252,126 @@
             </div>
         </section>
 
+        <!-- FAQ SECTION -->
+        <section id="faq" class="section-faq">
+            <div class="container container-narrow reveal-group">
+                <h2 class="section-title reveal-item">FAQ — Rejoindre la respectable loge la Parole</h2>
+                
+                <div class="faq-accordion reveal-item">
+                    <!-- Question 1 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" id="faq-q-1">
+                            <span class="faq-question-text">Est-ce une secte ?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-q-1" aria-hidden="true">
+                            <div class="faq-answer-content">
+                                <p>Non. Le GODF est régi par une constitution et un règlement garantissant la liberté absolue de conscience, le respect de l'autre et un fonctionnement démocratique (aucun pouvoir exercé au-delà de trois années consécutives). Il n'y a pas de gourou ni de parole révélée. On entre librement et on peut partir sans contrainte.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-q-2">
+                            <span class="faq-question-text">Faut-il croire en Dieu ?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-q-2" aria-hidden="true">
+                            <div class="faq-answer-content">
+                                <p>Non. Le GODF est laïque et garantit la liberté absolue de conscience à tous ses membres. Il laisse chaque loge libre d'invoquer ou non le Grand Architecte de l'Univers. L'obédience pratique plusieurs rites (Rite Français, Rite Écossais Ancien Accepté, Rite Écossais Rectifié, Memphis-Misraïm…), utilisés comme outils de travail et de réflexion plutôt que comme dogmes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-q-3">
+                            <span class="faq-question-text">Quelle est la première étape d'une candidature ?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-q-3" aria-hidden="true">
+                            <div class="faq-answer-content">
+                                <p>Un premier contact est établi par le Vénérable (président) de la loge, qui évalue les motivations du candidat. Si l'engagement maçonnique correspond à ses attentes, le processus se poursuit avec trois rencontres supplémentaires avec des membres de la loge.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4" id="faq-q-4">
+                            <span class="faq-question-text">Comment se déroulent ces rencontres préliminaires ?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-q-4" aria-hidden="true">
+                            <div class="faq-answer-content">
+                                <p>Ce sont des entretiens approfondis (parfois appelés « enquêtes ») d'une à deux heures chacun, permettant de mieux connaître la personnalité du candidat, ses idées et ses aspirations, et de répondre à ses questions. Les trois frères rencontrant le candidat présentent ensuite un compte rendu à la loge.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5" id="faq-q-5">
+                            <span class="faq-question-text">Qu'est-ce que le passage sous le bandeau ?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" id="faq-answer-5" role="region" aria-labelledby="faq-q-5" aria-hidden="true">
+                            <div class="faq-answer-content">
+                                <p>C'est la présentation solennelle du candidat à la loge réunie. Le candidat est introduit les yeux bandés et répond à des questions posées par l'assemblée. La loge vote ensuite sur son admission, qui est validée si elle recueille plus des trois quarts des suffrages.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6" id="faq-q-6">
+                            <span class="faq-question-text">Comment se passe l'admission ?</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" id="faq-answer-6" role="region" aria-labelledby="faq-q-6" aria-hidden="true">
+                            <div class="faq-answer-content">
+                                <p>L'admission suit un rituel multiséculaire appelé initiation : une cérémonie symbolique faisant passer le candidat des Ténèbres à la Lumière. Le vécu de cette cérémonie fait partie intégrante du cheminement maçonnique et n'est volontairement pas détaillé davantage.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7" id="faq-q-7">
+                            <span class="faq-question-text">Ce que la Franc-maçonnerie n'est pas</span>
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" id="faq-answer-7" role="region" aria-labelledby="faq-q-7" aria-hidden="true">
+                            <div class="faq-answer-content">
+                                <p>Beaucoup d'idées reçues circulent sur la Franc-maçonnerie. Pour être clair :</p>
+                                <ul class="faq-list">
+                                    <li><span class="faq-bullet">—</span> <strong>Ce n'est pas un endroit pour s'enrichir.</strong> La Loge n'est pas un lieu de transactions financières ni un tremplin économique.</li>
+                                    <li><span class="faq-bullet">—</span> <strong>Ce n'est pas un chemin vers la célébrité.</strong> La discrétion est une valeur fondamentale ; on n'y vient pas pour être vu ou reconnu.</li>
+                                    <li><span class="faq-bullet">—</span> <strong>Ce n'est pas un club de réseautage.</strong> Les relations qui se nouent en Loge naissent de l'engagement intellectuel et fraternel, non d'une logique d'intérêt professionnel.</li>
+                                    <li><span class="faq-bullet">—</span> <strong>Ce n'est pas le repère des hautes personnalités de l'État.</strong> Si des personnalités publiques ont pu être francs-maçons, la Loge rassemble avant tout des femmes et des hommes ordinaires engagés dans une démarche de perfectionnement personnel.</li>
+                                    <li><span class="faq-bullet">—</span> <strong>Ce n'est pas un lieu où l'on acquiert des pouvoirs particuliers.</strong> La Franc-maçonnerie est un chemin initiatique et philosophique, pas une pratique ésotérique conférant des capacités extraordinaires.</li>
+                                </ul>
+                                <p class="faq-summary"><strong>Ce que la Franc-maçonnerie est, en revanche :</strong> un espace de travail sur soi, de dialogue sincère, de fraternité et de réflexion humaniste collective.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEPARATOR FAQ -->
+        <div class="masonic-separator" aria-hidden="true">
+            <div class="separator-line"></div>
+            <div class="separator-icon">
+                <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 15 L20 85 M50 15 L80 85" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M15 45 L50 78 L85 45" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="separator-line"></div>
+        </div>
+
         <!-- 7. CONTACT FORM SECTION -->
         <section id="contact" class="section-contact">
             <div class="container container-narrow reveal-group">
@@ -270,13 +395,18 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="phone-number">Numéro de téléphone</label>
+                        <input type="tel" id="phone-number" name="phone" placeholder="Ex: +237 6xx xx xx xx">
+                    </div>
+
+                    <div class="form-group">
                         <label for="msg-subject">Objet du message <span class="required">*</span></label>
                         <input type="text" id="msg-subject" name="_subject" required placeholder="Sujet de votre demande">
                     </div>
 
                     <div class="form-group">
                         <label for="message-content">Message <span class="required">*</span></label>
-                        <textarea id="message-content" name="message" rows="7" required placeholder="Écrivez votre message ici... (minimum 6 lignes)"></textarea>
+                        <textarea id="message-content" name="message" rows="7" required placeholder="Écrivez votre message ici..."></textarea>
                     </div>
 
                     <div class="form-submit-container">
@@ -308,6 +438,7 @@
             </div>
             <p class="footer-line">La Respectable Loge La Parole · Loge n° 5385</p>
             <p class="footer-line">Grand Orient de France · Orient de Yaoundé, Cameroun</p>
+            <p class="footer-line">Contact : <a href="mailto:laparolegodf@gmail.com" class="footer-link">laparolegodf@gmail.com</a></p>
             <p class="footer-line"><a href="https://www.godf.org" target="_blank" rel="noopener" class="footer-link">www.godf.org</a></p>
             <p class="footer-line footer-copyright">© 2025 — Tous droits réservés</p>
         </div>
