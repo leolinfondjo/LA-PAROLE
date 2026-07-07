@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualités & Travaux — La Parole</title>
+    <meta name="description" content="Toutes les publications, réflexions maçonniques et événements de la Loge La Parole et du GODF.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Barre de Navigation Sticky -->
+    <header class="navbar-container" id="main-header">
+        <div class="navbar-content">
+            <a href="index.html" class="nav-logo" id="logo-link">
+                <img src="assets/logo-loge.png" alt="Sceau de la Respectable Loge La Parole" class="nav-logo-img">
+                <div class="nav-logo-text">
+                    <span class="logo-title">La Parole</span>
+                    <span class="logo-subtitle">GODF · n° 5385</span>
+                </div>
+            </a>
+            
+            <nav class="nav-menu-desktop" aria-label="Navigation principale">
+                <a href="index.html#welcome" class="nav-link">Accueil</a>
+                <a href="index.html#about" class="nav-link">À propos</a>
+                <a href="index.html#history" class="nav-link">Histoire</a>
+                <a href="index.html#faq" class="nav-link">FAQ</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="https://www.godf.org/" target="_blank" rel="noopener" class="nav-link btn-nav-godf">Site du GODF ↗</a>
+            </nav>
+
+            <div class="nav-controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Basculer vers le mode clair" title="Basculer le thème">
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+
+                <button class="hamburger-btn" aria-label="Ouvrir le menu mobile" aria-expanded="false" id="hamburger-toggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Drawer Mobile -->
+    <div class="mobile-drawer" id="mobile-menu-drawer" aria-hidden="true">
+        <nav class="nav-menu-mobile" aria-label="Navigation mobile">
+            <a href="index.html#welcome" class="mobile-nav-link">Accueil</a>
+            <a href="index.html#about" class="mobile-nav-link">À propos</a>
+            <a href="index.html#history" class="mobile-nav-link">Histoire</a>
+            <a href="index.html#faq" class="mobile-nav-link">FAQ</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+            <a href="https://www.godf.org/" target="_blank" rel="noopener" class="mobile-nav-link btn-mobile-godf">Site du GODF ↗</a>
+        </nav>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <section class="page-header">
+            <div class="container reveal-group">
+                <h1 class="page-title reveal-item">Actualités & Travaux</h1>
+                <p class="page-subtitle reveal-item">Toutes nos publications, réflexions et événements</p>
+            </div>
+        </section>
+
+        <section class="blog-section container reveal-group">
+            <div class="blog-filters reveal-item">
+                <button class="filter-btn active" data-filter="all">Toutes</button>
+                <button class="filter-btn" data-filter="actualites">Actualités GODF / La Parole</button>
+                <button class="filter-btn" data-filter="reflexions">Réflexions Maçonniques</button>
+                <button class="filter-btn" data-filter="evenements">Événements</button>
+            </div>
+
+            <div class="blog-grid reveal-item">
+                <!-- Article 1 -->
+                <article class="blog-card" data-category="actualites">
+                    <a href="presentation.html" class="blog-card-link">
+                        <div class="blog-card-image" style="background-image: url('assets/hero-bg.png');"></div>
+                        <div class="blog-card-content">
+                            <span class="blog-category">Actualités GODF / La Parole</span>
+                            <h3 class="blog-title">Le mot de bienvenue du Vénérable Maître</h3>
+                            <p class="blog-excerpt">Découvrez la présentation officielle de notre Loge et les valeurs qui nous animent au quotidien.</p>
+                            <span class="blog-readmore">Lire l'article ↗</span>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="blog-card" data-category="reflexions">
+                    <a href="https://godf.org/qui-sommes-nous/publications/questions-a-letude-des-loges/" target="_blank" rel="noopener" class="blog-card-link">
+                        <div class="blog-card-image" style="background-image: url('assets/filigrane-sec4.png');"></div>
+                        <div class="blog-card-content">
+                            <span class="blog-category">Réflexions Maçonniques</span>
+                            <h3 class="blog-title">Questions à l'étude : Synthèses 2024-2025</h3>
+                            <p class="blog-excerpt">Réponses des loges du GODF aux grandes questions de société : laïcité, colonialisme, émotion et raison, construction européenne.</p>
+                            <span class="blog-readmore">Voir sur godf.org ↗</span>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- Article 3 -->
+                <article class="blog-card" data-category="evenements">
+                    <a href="convent-2026.html" class="blog-card-link">
+                        <div class="blog-card-image" style="background-image: url('assets/filigrane-sec2.png');"></div>
+                        <div class="blog-card-content">
+                            <span class="blog-category">Événements</span>
+                            <h3 class="blog-title">Convent 2026 du Grand Orient de France</h3>
+                            <p class="blog-excerpt">Du 26 au 29 août 2026, la ville de Bordeaux accueille le rassemblement majeur de notre obédience. Découvrez le programme.</p>
+                            <span class="blog-readmore">Lire l'article ↗</span>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-container">
+        <div class="container footer-content">
+            <div class="footer-logo-wrap">
+                <img src="assets/logo-loge.png" alt="Sceau de la Respectable Loge La Parole" class="footer-logo-img">
+            </div>
+            <p class="footer-line">La Respectable Loge La Parole · Loge n° 5385</p>
+            <p class="footer-line">Grand Orient de France · Orient de Yaoundé, Cameroun</p>
+            <p class="footer-line">Contact : <a href="mailto:laparolegodf@gmail.com" class="footer-link">laparolegodf@gmail.com</a></p>
+            <p class="footer-line"><a href="https://www.godf.org" target="_blank" rel="noopener" class="footer-link">www.godf.org</a></p>
+            <p class="footer-line footer-copyright">© 2025 — Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
