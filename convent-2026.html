@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convent 2026 du GODF — La Parole</title>
+    <meta name="description" content="Informations sur le Convent 2026 du Grand Orient de France à Bordeaux.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            text-align: center;
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .page-title {
+            font-size: 3rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+        .article-content {
+            padding: 80px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .program-card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+        .program-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+        .program-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .program-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre de Navigation Sticky -->
+    <header class="navbar-container" id="main-header">
+        <div class="navbar-content">
+            <a href="index.html" class="nav-logo" id="logo-link">
+                <img src="assets/logo-loge.png" alt="Sceau de la Respectable Loge La Parole" class="nav-logo-img">
+                <div class="nav-logo-text">
+                    <span class="logo-title">La Parole</span>
+                    <span class="logo-subtitle">GODF · n° 5385</span>
+                </div>
+            </a>
+            
+            <nav class="nav-menu-desktop" aria-label="Navigation principale">
+                <a href="index.html#welcome" class="nav-link">Accueil</a>
+                <a href="index.html#about" class="nav-link">À propos</a>
+                <a href="index.html#history" class="nav-link">Histoire</a>
+                <a href="index.html#faq" class="nav-link">FAQ</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="https://www.godf.org/" target="_blank" rel="noopener" class="nav-link btn-nav-godf">Site du GODF ↗</a>
+            </nav>
+
+            <div class="nav-controls">
+                <!-- Bouton bascule Sombre / Clair -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="Basculer vers le mode clair" title="Basculer le thème">
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+
+                <button class="hamburger-btn" aria-label="Ouvrir le menu mobile" aria-expanded="false" id="hamburger-toggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Drawer Mobile -->
+    <div class="mobile-drawer" id="mobile-menu-drawer" aria-hidden="true">
+        <nav class="nav-menu-mobile" aria-label="Navigation mobile">
+            <a href="index.html#welcome" class="mobile-nav-link">Accueil</a>
+            <a href="index.html#about" class="mobile-nav-link">À propos</a>
+            <a href="index.html#history" class="mobile-nav-link">Histoire</a>
+            <a href="index.html#faq" class="mobile-nav-link">FAQ</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+            <a href="https://www.godf.org/" target="_blank" rel="noopener" class="mobile-nav-link btn-mobile-godf">Site du GODF ↗</a>
+        </nav>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <section class="page-header">
+            <div class="container reveal-group">
+                <h1 class="page-title reveal-item">Convent 2026</h1>
+                <p class="page-subtitle reveal-item">Le grand rassemblement du GODF à Bordeaux</p>
+            </div>
+        </section>
+
+        <section class="article-content container reveal-group">
+            <div class="reveal-item">
+                <p><strong>Du 26 au 29 août 2026</strong>, le <strong>Palais 2 l'Atlantique</strong> (Cours Charles Bricaud, 33300 Bordeaux) accueille le Convent du Grand Orient de France.</p>
+                <p>Environ 1 800 participants – délégués des loges, membres du Conseil de l'Ordre et représentants de l'obédience – sont attendus pour cet événement majeur de la première organisation maçonnique française.</p>
+                <br>
+                <h2 style="font-family: var(--font-title); color: var(--accent-gold); margin-bottom: 1rem;">Débats • Résolutions • Élections • Orientations</h2>
+                <p>Le Convent constitue l'organe démocratique suprême du Grand Orient de France. Les délégués des loges débattent des rapports d'activité, examinent les projets de résolutions et votent les grandes orientations de l'obédience pour l'année à venir.</p>
+            </div>
+
+            <div class="program-grid reveal-item" style="transition-delay: 200ms;">
+                <div class="program-card">
+                    <span class="program-icon">📅</span>
+                    <p class="program-text">4 jours de travaux et échanges</p>
+                </div>
+                <div class="program-card">
+                    <span class="program-icon">📊</span>
+                    <p class="program-text">Débats et votes sur les rapports d'activité, financier et les résolutions</p>
+                </div>
+                <div class="program-card">
+                    <span class="program-icon">👥</span>
+                    <p class="program-text">Travaux en commissions et échanges entre loges</p>
+                </div>
+                <div class="program-card">
+                    <span class="program-icon">🗳️</span>
+                    <p class="program-text">Élections et désignations des instances nationales</p>
+                </div>
+                <div class="program-card">
+                    <span class="program-icon">🤝</span>
+                    <p class="program-text">Moments de cohésion fraternelle</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem;" class="reveal-item">
+                <a href="index.html#news" class="btn-cta">← Retour à l'accueil</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-container">
+        <div class="container footer-content">
+            <div class="footer-logo-wrap">
+                <img src="assets/logo-loge.png" alt="Sceau de la Respectable Loge La Parole" class="footer-logo-img">
+            </div>
+            <p class="footer-line">La Respectable Loge La Parole · Loge n° 5385</p>
+            <p class="footer-line">Grand Orient de France · Orient de Yaoundé, Cameroun</p>
+            <p class="footer-line">Contact : <a href="mailto:laparolegodf@gmail.com" class="footer-link">laparolegodf@gmail.com</a></p>
+            <p class="footer-line"><a href="https://www.godf.org" target="_blank" rel="noopener" class="footer-link">www.godf.org</a></p>
+            <p class="footer-line footer-copyright">© 2025 — Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

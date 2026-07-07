@@ -248,6 +248,83 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    // --- 5.5. SLIDER ACTUALITÉS / TRAVAUX ---
+    const newsSlider = document.getElementById('news-slider');
+    const sliderPrevBtn = document.getElementById('slider-prev');
+    const sliderNextBtn = document.getElementById('slider-next');
+    const sliderDotsContainer = document.getElementById('slider-dots');
+    
+    if (newsSlider) {
+        const slides = newsSlider.querySelectorAll('.news-slide');
+        const numSlides = slides.length;
+        let currentSlide = 0;
+        
+        for (let i = 0; i < numSlides; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('slider-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+            });
+            sliderDotsContainer.appendChild(dot);
+        }
+        
+        const dots = sliderDotsContainer.querySelectorAll('.slider-dot');
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            if (currentSlide < 0) currentSlide = numSlides - 1;
+            if (currentSlide >= numSlides) currentSlide = 0;
+            
+            newsSlider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+        
+        if (sliderPrevBtn) {
+            sliderPrevBtn.addEventListener('click', () => {
+                goToSlide(currentSlide - 1);
+            });
+        }
+        
+        if (sliderNextBtn) {
+            sliderNextBtn.addEventListener('click', () => {
+                goToSlide(currentSlide + 1);
+            });
+        }
+        
+        let slideInterval = setInterval(() => {
+            goToSlide(currentSlide + 1);
+        }, 6000);
+        
+        const sliderContainer = document.querySelector('.news-slider-container');
+        if (sliderContainer) {
+            sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            sliderContainer.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(() => {
+                    goToSlide(currentSlide + 1);
+                }, 6000);
+            });
+            
+            // Swipe tactile basique
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            sliderContainer.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {passive: true});
+            
+            sliderContainer.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchStartX - touchEndX > 50) goToSlide(currentSlide + 1); // swipe left
+                if (touchEndX - touchStartX > 50) goToSlide(currentSlide - 1); // swipe right
+            }, {passive: true});
+        }
+    }
+
+
     // --- 6. VALIDATION & TRANSMISSION DU FORMULAIRE ---
     const contactForm = document.getElementById('lodge-contact-form');
     const successScreen = document.getElementById('success-screen');

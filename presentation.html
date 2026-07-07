@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation & Mot de bienvenue — La Parole</title>
+    <meta name="description" content="Mot de bienvenue et présentation de la Loge maçonnique La Parole, GODF à Yaoundé.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            text-align: center;
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .page-title {
+            font-size: 3rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+        .article-content {
+            padding: 80px 0;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+        }
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        .dropcap {
+            float: left;
+            font-family: var(--font-title);
+            font-size: 4rem;
+            line-height: 0.8;
+            padding-top: 4px;
+            padding-right: 8px;
+            padding-left: 3px;
+            color: var(--accent-gold);
+        }
+        .signature {
+            margin-top: 3rem;
+            text-align: right;
+            font-family: var(--font-title);
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre de Navigation Sticky -->
+    <header class="navbar-container" id="main-header">
+        <div class="navbar-content">
+            <a href="index.html" class="nav-logo" id="logo-link">
+                <img src="assets/logo-loge.png" alt="Sceau de la Respectable Loge La Parole" class="nav-logo-img">
+                <div class="nav-logo-text">
+                    <span class="logo-title">La Parole</span>
+                    <span class="logo-subtitle">GODF · n° 5385</span>
+                </div>
+            </a>
+            
+            <nav class="nav-menu-desktop" aria-label="Navigation principale">
+                <a href="index.html#welcome" class="nav-link">Accueil</a>
+                <a href="index.html#about" class="nav-link">À propos</a>
+                <a href="index.html#history" class="nav-link">Histoire</a>
+                <a href="index.html#faq" class="nav-link">FAQ</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="https://www.godf.org/" target="_blank" rel="noopener" class="nav-link btn-nav-godf">Site du GODF ↗</a>
+            </nav>
+
+            <div class="nav-controls">
+                <!-- Bouton bascule Sombre / Clair -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="Basculer vers le mode clair" title="Basculer le thème">
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+
+                <button class="hamburger-btn" aria-label="Ouvrir le menu mobile" aria-expanded="false" id="hamburger-toggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Drawer Mobile -->
+    <div class="mobile-drawer" id="mobile-menu-drawer" aria-hidden="true">
+        <nav class="nav-menu-mobile" aria-label="Navigation mobile">
+            <a href="index.html#welcome" class="mobile-nav-link">Accueil</a>
+            <a href="index.html#about" class="mobile-nav-link">À propos</a>
+            <a href="index.html#history" class="mobile-nav-link">Histoire</a>
+            <a href="index.html#faq" class="mobile-nav-link">FAQ</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+            <a href="https://www.godf.org/" target="_blank" rel="noopener" class="mobile-nav-link btn-mobile-godf">Site du GODF ↗</a>
+        </nav>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <section class="page-header">
+            <div class="container reveal-group">
+                <h1 class="page-title reveal-item">Le Mot de Bienvenue</h1>
+                <p class="page-subtitle reveal-item">Présentation de la Respectable Loge La Parole</p>
+            </div>
+        </section>
+
+        <section class="article-content container reveal-group">
+            <div class="reveal-item">
+                <p><span class="dropcap">B</span>ienvenue sur le site internet de la Respectable Loge <strong>La Parole</strong>, Loge n° 5385 du Grand Orient de France (GODF) à l'Orient de Yaoundé au Cameroun.</p>
+                <p>Fondée en 2015, notre Loge est née d'une vision forte : celle de faire vivre et prospérer une franc-maçonnerie adogmatique, ouverte, humaniste et surtout mixte, sur la terre camerounaise.</p>
+                <p>À une époque où les Loges du GODF établies au Cameroun étaient exclusivement masculines, la création de La Parole a marqué un véritable tournant dans l'histoire de l'obédience en Afrique centrale. Nous avons voulu offrir un espace initiatique unique où femmes et hommes peuvent travailler de concert, à parfaite égalité, dans un esprit de profond respect mutuel, de fraternité sincère et d'écoute bienveillante.</p>
+                <p>Notre Loge pratique le Rite Français, rite historique et fondateur du GODF, ainsi que le Régime Écossais Rectifié, une voie initiatique axée sur l'éthique et la quête intérieure. Nous avons la chance de réunir des Sœurs et des Frères de tous horizons et de toutes générations, conjuguant ainsi l'expérience éclairée de nos aînés au dynamisme et à la créativité des plus jeunes.</p>
+                <p>Adogmatique et résolument attachée à la liberté absolue de conscience, La Parole constitue un laboratoire d'idées. Nous œuvrons sans relâche à notre perfectionnement moral et intellectuel, tout en réfléchissant aux grands défis de notre époque et de nos sociétés. La mixité de notre Loge est notre plus grande force : elle enrichit nos travaux, confronte nos points de vue et élargit notre compréhension du monde.</p>
+                <p>Si vous êtes en quête de sens, animé par une volonté de perfectionnement personnel et par le désir de bâtir un monde meilleur, plus juste et plus éclairé, vous trouverez au sein de La Parole un lieu de réflexion et d'engagement authentique.</p>
+                
+                <div class="signature">
+                    Le Vénérable Maître<br>
+                    <span style="font-size: 1rem; color: var(--text-secondary); font-style: normal; text-transform: uppercase;">Respectable Loge La Parole</span>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 5rem;" class="reveal-item">
+                <a href="index.html#news" class="btn-cta">← Retour à l'accueil</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-container">
+        <div class="container footer-content">
+            <div class="footer-logo-wrap">
+                <img src="assets/logo-loge.png" alt="Sceau de la Respectable Loge La Parole" class="footer-logo-img">
+            </div>
+            <p class="footer-line">La Respectable Loge La Parole · Loge n° 5385</p>
+            <p class="footer-line">Grand Orient de France · Orient de Yaoundé, Cameroun</p>
+            <p class="footer-line">Contact : <a href="mailto:laparolegodf@gmail.com" class="footer-link">laparolegodf@gmail.com</a></p>
+            <p class="footer-line"><a href="https://www.godf.org" target="_blank" rel="noopener" class="footer-link">www.godf.org</a></p>
+            <p class="footer-line footer-copyright">© 2025 — Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
