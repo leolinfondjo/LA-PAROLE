@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leolinfondjo.github.io/LA-PAROLE/sitemap.xml

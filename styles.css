@@ -3,7 +3,15 @@
    DESIGN SYSTEM & STYLESHEET
    ========================================================================== */
 
-/* --- Variables Globales (Mode Sombre — défaut) --- */
+/* =========================================================
+   PALETTE SOMBRE — socle des variables
+   =========================================================
+   Attention : ces valeurs sont le socle du cascade, mais PAS le thème
+   affiché par défaut. Le script inline du <head> pose `light-mode` sur
+   <html> sauf si le visiteur a explicitement mémorisé le thème sombre.
+   Le thème réellement servi par défaut est donc le thème clair, défini
+   plus bas dans `html.light-mode`.
+   ========================================================= */
 :root {
     /* Palette Chromatique Sombre */
     --bg-primary: #0D0D0D;       /* Noir profond */
@@ -17,28 +25,50 @@
     
     --text-primary: #E8E0D0;     /* Ivoire / blanc cassé */
     --text-secondary: #C2BBB0;   /* Muted ivoire pour lecture prolongée */
-    --text-muted: #777777;       /* Gris pour le footer et détails secondaires */
-    
+    --text-muted: #8A8A8A;       /* Détails secondaires — 5.63:1 sur --bg-primary */
+
     --accent-gold: #C9A84C;      /* Or mat */
     --accent-gold-hover: #E3C268;/* Or mat plus brillant pour hovers */
-    --border-color: #2A2A2A;     /* Séparateurs & bordures */
+    --border-color: #2A2A2A;     /* Liserés décoratifs (cartes, séparateurs) */
+    --border-strong: #6A6A6A;    /* Contours de contrôles — 3.41:1 sur --bg-input */
     --input-focus-bg: #171717;   /* Fond input au focus */
-    
+
     /* Typographies */
     --font-title: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-    
+
+    /* --- Mesure typographique ---------------------------------------------
+       Largeur maximale d'une colonne de texte. La règle de lisibilité vise
+       65–75 caractères par ligne ; l'unité `ch` suit la taille de police,
+       contrairement à une largeur en pixels.
+
+       Calibrage : `1ch` vaut la largeur du chiffre « 0 », sensiblement plus
+       large que la moyenne des lettres. Mesuré sur ce site (Inter, prose
+       française), 1ch rend environ 1,25 caractère réel. D'où 54ch ≈ 68
+       caractères par ligne. Ne pas confondre la valeur CSS et le résultat. */
+    --measure: 54ch;             /* Prose courante — env. 68 car./ligne */
+    --measure-narrow: 46ch;      /* Colonnes de carte, encarts */
+
+    /* --- Échelle d'espacement (registre « spacieux ») ---------------------- */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+
     /* Espacements & transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     --transition-fast: all 0.2s ease;
-    
+
     /* Layout heights */
     --header-height: 80px;
 }
 
 /* =========================================================
-   MODE CLAIR — surcharge des variables via html.light-mode
+   MODE CLAIR — THÈME PAR DÉFAUT du site
    Palette : parchemin ivoire, encre sombre, or foncé
+   Appliqué via html.light-mode, posé par le script du <head>.
    ========================================================= */
 html.light-mode {
     --bg-primary: #F5F0E8;       /* Parchemin ivoire chaud */
@@ -52,11 +82,12 @@ html.light-mode {
     
     --text-primary: #1C1712;     /* Encre sombre, quasi-noir */
     --text-secondary: #3D3628;   /* Encre brun-sombre */
-    --text-muted: #888070;       /* Muted warm pour détails */
-    
+    --text-muted: #6B6355;       /* Détails secondaires — 5.23:1 sur --bg-primary */
+
     --accent-gold: #7A5E1A;      /* Or foncé (contraste sur fond clair) */
     --accent-gold-hover: #9A7820;/* Or foncé hover */
-    --border-color: #D4CBB8;     /* Bordures parchemin */
+    --border-color: #D4CBB8;     /* Liserés décoratifs (cartes, séparateurs) */
+    --border-strong: #8F815F;    /* Contours de contrôles — 3.59:1 sur --bg-input */
     --input-focus-bg: #FDF9F3;   /* Fond input focus mode clair */
 }
 
@@ -91,6 +122,15 @@ body {
     padding: 0 1rem;
 }
 
+/* Sur petit écran, `width: 90%` et `padding: 0 1rem` se cumulaient et
+   consommaient 19 % de la largeur, ramenant la ligne à 33 caractères.
+   La gouttière de 1rem suffit seule à cette taille. */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+}
+
 .container-narrow {
     max-width: 780px;
 }
@@ -99,6 +139,92 @@ section {
     padding: 100px 0;
     position: relative;
     overflow: hidden;
+}
+
+/* =========================================================
+   MESURE TYPOGRAPHIQUE — colonnes de lecture
+   =========================================================
+   Ce site est composé presque entièrement de prose longue. Sans plafond,
+   les paragraphes atteignaient 97 à 139 caractères par ligne sur écran
+   large, là où la lecture confortable se situe entre 65 et 75 : l'œil perd
+   la ligne suivante au retour chariot.
+
+   Les colonnes sont centrées pour rester sous les titres de section, qui
+   sont eux-mêmes centrés. Le texte est ferré à gauche : le français sans
+   césure automatique supporte mal la justification, qui creuse des
+   « rivières » de blanc d'autant plus visibles que la ligne est longue.
+   ========================================================= */
+.section-text,
+.intro-paragraph,
+.final-paragraph,
+.article-content > div,
+.faq-answer-content {
+    max-width: var(--measure);
+    margin-inline: auto;
+    text-align: left;
+}
+
+/* Colonnes déjà étroites (cartes, encarts) : mesure resserrée. */
+.card-text,
+.news-excerpt,
+.blog-excerpt {
+    max-width: var(--measure-narrow);
+    text-align: left;
+}
+
+/* Les listes de la FAQ suivent la même colonne que les paragraphes. */
+.faq-list {
+    max-width: var(--measure);
+    margin-inline: auto;
+}
+
+/* =========================================================
+   TRAITEMENT ÉDITORIAL
+   =========================================================
+   Registre « grille éditoriale / magazine » : lettrine d'ouverture et
+   citation détachée. Ces marques donnent un point d'entrée visuel à des
+   pages qui, sans elles, ne sont qu'une suite de blocs de texte.
+   ========================================================= */
+
+/* Lettrine sur le premier paragraphe des sections de prose.
+   ::first-letter évite d'avoir à insérer un <span> dans le HTML. */
+.section-welcome .section-text > p:first-of-type::first-letter,
+.section-why .section-text > p:first-of-type::first-letter {
+    float: left;
+    font-family: var(--font-title);
+    font-size: 3.6rem;
+    line-height: 0.82;
+    padding: 0.1rem 0.55rem 0 0;
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+/* La lettrine perturbe la lecture sur une colonne très étroite : on la
+   retire sous 480px, où elle mangerait un tiers de la largeur de ligne. */
+@media (max-width: 480px) {
+    .section-welcome .section-text > p:first-of-type::first-letter,
+    .section-why .section-text > p:first-of-type::first-letter {
+        float: none;
+        font-size: inherit;
+        line-height: inherit;
+        padding: 0;
+        color: inherit;
+        font-weight: inherit;
+    }
+}
+
+/* Citation détachée : filet doré à gauche plutôt qu'un bloc centré, pour
+   marquer l'incise sans rompre la colonne de lecture. */
+.pull-quote {
+    max-width: var(--measure);
+    margin: var(--space-lg) auto;
+    padding-left: var(--space-md);
+    border-left: 2px solid var(--accent-gold);
+    font-family: var(--font-title);
+    font-style: italic;
+    font-size: 1.45rem;
+    line-height: 1.5;
+    color: var(--text-primary);
 }
 
 /* --- Typographie Générique --- */
@@ -208,7 +334,7 @@ textarea:focus-visible {
 
 .logo-subtitle {
     font-family: var(--font-body);
-    font-size: 0.65rem;
+    font-size: 0.75rem;   /* 12px : plancher de lisibilité (était 10.4px) */
     letter-spacing: 0.15em;
     color: var(--accent-gold);
     text-transform: uppercase;
@@ -316,7 +442,10 @@ html.light-mode .nav-logo:hover .nav-logo-img {
 
 .nav-menu-desktop {
     display: flex;
-    gap: 2.5rem;
+    /* Gap réduit de 2.5rem à 1.8rem : le padding horizontal ajouté sur
+       .nav-link compense, l'espacement visuel reste équivalent. */
+    gap: 1.8rem;
+    align-items: center;
 }
 
 .nav-link {
@@ -327,7 +456,9 @@ html.light-mode .nav-logo:hover .nav-logo-img {
     letter-spacing: 0.15em;
     color: var(--text-primary);
     position: relative;
-    padding: 5px 0;
+    /* Padding horizontal pour que les intitulés courts (« FAQ ») dépassent
+       le seuil de 24 px de large ; sans lui, la cible tombait à 23 px. */
+    padding: 10px 8px;
     font-weight: 500;
 }
 
@@ -374,12 +505,15 @@ html.light-mode .nav-logo:hover .nav-logo-img {
 }
 
 /* Bouton Bascule Thème (Lune / Soleil) */
+/* 44×44 px : cible tactile minimale recommandée. La règle `overflow: hidden`
+   ci-dessous découperait un pseudo-élément d'agrandissement, on dimensionne
+   donc le bouton lui-même. */
 .theme-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     border: 1px solid var(--border-color);
     background: transparent;
@@ -414,12 +548,17 @@ html.light-mode .theme-toggle {
 }
 
 /* Hamburger mobile */
+/* Zone tactile de 44×44 px (recommandation WCAG) obtenue par le padding :
+   le contenu utile reste de 24×18 px, soit exactement le dessin d'origine
+   des trois traits. Sans cela, la commande de navigation principale sur
+   mobile n'offrait qu'une cible de 24×18 px. */
 .hamburger-btn {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 24px;
-    height: 18px;
+    width: 44px;
+    height: 44px;
+    padding: 13px 10px;
     background: none;
     border: none;
     cursor: pointer;
@@ -449,6 +588,10 @@ html.light-mode .theme-toggle {
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
+    /* Le retrait de l'ordre de tabulation est assuré par l'attribut `inert`,
+       présent dans le HTML et retiré par script.js à l'ouverture. Une astuce
+       CSS (visibility différée) serait ici trompeuse : visibility est héritée
+       par les liens et son recalcul dépend du timing des transitions. */
 }
 
 .mobile-drawer.open {
@@ -521,7 +664,7 @@ html.light-mode .theme-toggle {
     left: 0;
     width: 100%;
     height: 115%;
-    background-image: url('assets/hero-bg.png');
+    background-image: url('assets/hero-bg.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -621,11 +764,8 @@ html.light-mode .theme-toggle {
     background-color: var(--bg-primary);
 }
 
-.section-welcome .section-text {
-    text-align: justify;
-    max-width: 780px;
-    margin: 0 auto;
-}
+/* La mesure de lecture est fixée globalement dans la section
+   « MESURE TYPOGRAPHIQUE » ; ne pas la redéfinir par section. */
 
 /* Filigrane Maçonnique standard */
 .filigrane-bg {
@@ -644,7 +784,7 @@ html.light-mode .theme-toggle {
 }
 
 .filigrane-compass {
-    background-image: url('assets/filigrane-sec2.png');
+    background-image: url('assets/filigrane-sec2.webp');
     will-change: transform;
 }
 
@@ -681,7 +821,6 @@ html.light-mode .theme-toggle {
 
 .intro-paragraph {
     font-size: 1.15rem;
-    text-align: justify;
     line-height: 1.9;
     margin-bottom: 3.5rem;
 }
@@ -726,7 +865,6 @@ html.light-mode .theme-toggle {
 }
 
 .final-paragraph {
-    text-align: justify;
     margin-top: 1rem;
 }
 
@@ -737,12 +875,8 @@ html.light-mode .theme-toggle {
 }
 
 .filigrane-scroll {
-    background-image: url('assets/filigrane-sec4.png');
+    background-image: url('assets/filigrane-sec4.webp');
     will-change: transform;
-}
-
-.section-why .section-text {
-    text-align: justify;
 }
 
 
@@ -799,7 +933,6 @@ html.light-mode .theme-toggle {
     font-size: 0.98rem;
     line-height: 1.75;
     color: var(--text-secondary);
-    text-align: justify;
     margin-bottom: 0;
 }
 
@@ -981,6 +1114,23 @@ html.light-mode .motto-quote {
     z-index: 1;
 }
 
+/* Voile assombrissant sous le texte de la diapositive.
+   Sans lui, le texte blanc reposait à même la photographie : la luminance
+   moyenne de la zone donnait un honorable 5,92:1, mais les pixels les plus
+   clairs de l'image tombaient à 1,11:1 — le texte y devenait illisible.
+   Le dégradé garantit un fond sombre quel que soit le visuel employé. */
+.news-slide-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.65) 45%,
+        rgba(0, 0, 0, 0.35) 100%
+    );
+}
+
 .news-slide:hover .news-slide-bg {
     transform: scale(1.05);
 }
@@ -1009,10 +1159,17 @@ html.light-mode .news-slide::before {
     z-index: 3;
 }
 
+/* Badge sur pastille dorée. Aucune couleur de texte ne convient aux deux
+   thèmes : l'or vaut #C9A84C en sombre (clair, exige un texte noir : 9,19:1,
+   le blanc n'y ferait que 2,29:1) et #7A5E1A en clair (foncé, exige un texte
+   blanc : 6,10:1, le noir n'y ferait que 3,44:1). D'où un jeton dédié. */
+:root       { --on-gold: #000000; }
+html.light-mode { --on-gold: #FFFFFF; }
+
 .news-date {
     display: inline-block;
     background-color: var(--accent-gold);
-    color: #000;
+    color: var(--on-gold);
     padding: 4px 10px;
     font-size: 0.75rem;
     font-weight: 600;
@@ -1034,7 +1191,7 @@ html.light-mode .news-slide::before {
     color: rgba(255, 255, 255, 0.85);
     font-size: 1.05rem;
     margin-bottom: 1.5rem;
-    max-width: 700px;
+    /* max-width géré par la section « MESURE TYPOGRAPHIQUE » (--measure-narrow) */
 }
 
 .news-readmore {
@@ -1062,8 +1219,8 @@ html.light-mode .news-slide::before {
     background: none;
     border: 1px solid var(--accent-gold);
     color: var(--accent-gold);
-    width: 40px;
-    height: 40px;
+    width: 44px;   /* cible tactile minimale */
+    height: 44px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -1079,21 +1236,43 @@ html.light-mode .news-slide::before {
 
 .slider-dots {
     display: flex;
-    gap: 8px;
+    /* Aucun gap : le padding de 17px de chaque puce assure déjà la séparation
+       visuelle et empêche les zones tactiles de se chevaucher. */
+    gap: 0;
 }
 
+/* Puces de navigation : de vrais <button> pour rester accessibles au clavier.
+   La cible tactile fait 44×44 px via le padding, alors que la pastille
+   visible reste à 10 px grâce à background-clip: content-box. */
 .slider-dot {
-    width: 10px;
-    height: 10px;
+    width: 44px;
+    height: 44px;
+    padding: 17px;
+    border: none;
     border-radius: 50%;
     background-color: var(--border-color);
+    background-clip: content-box;
     cursor: pointer;
     transition: var(--transition-smooth);
+    -webkit-appearance: none;
+    appearance: none;
 }
 
+.slider-dot:hover {
+    background-color: var(--accent-gold-hover);
+}
+
+.slider-dot:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 0;
+}
+
+/* La puce active grossit en réduisant son padding, et non par transform:
+   scale(), qui agrandissait aussi la zone tactile et la faisait empiéter
+   sur celle des puces voisines. La boîte reste à 44×44 px. */
 .slider-dot.active {
     background-color: var(--accent-gold);
-    transform: scale(1.2);
+    padding: 15px;
 }
 
 .news-footer-action {
@@ -1306,7 +1485,9 @@ html.light-mode .news-slide::before {
 .form-group input,
 .form-group textarea {
     background-color: var(--bg-input);
-    border: 1px solid var(--border-color);
+    /* Le contour identifie le champ : il relève de --border-strong (≥3:1),
+       pas du liseré décoratif utilisé pour les cartes. */
+    border: 1px solid var(--border-strong);
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 1rem;
@@ -1317,12 +1498,22 @@ html.light-mode .news-slide::before {
 
 .form-group input:hover,
 .form-group textarea:hover {
-    border-color: rgba(201, 168, 76, 0.4);
+    border-color: var(--accent-gold);
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
+/* Anneau de focus réel : on ne se contente pas de recolorer la bordure, qui
+   disparaîtrait en mode contraste forcé et reste trop discrète au clavier. */
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+    border-color: var(--accent-gold);
+    background-color: var(--input-focus-bg);
+}
+
+/* Souris : pas d'anneau, mais le champ reste clairement actif. */
+.form-group input:focus:not(:focus-visible),
+.form-group textarea:focus:not(:focus-visible) {
     border-color: var(--accent-gold);
     background-color: var(--input-focus-bg);
 }
@@ -1357,6 +1548,45 @@ html.light-mode .news-slide::before {
 }
 
 /* Confirmation Success Screen */
+/* Piège à robots : retiré du flux sans display:none, que certains bots détectent. */
+.form-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Message affiché quand l'envoi échoue (réseau, service indisponible…) */
+.form-error-message {
+    margin: 0.5rem 0 0;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--accent-gold);
+    border-left-width: 3px;
+    background-color: var(--bg-card);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.form-error-message[hidden] {
+    display: none;
+}
+
+/* Avis affiché aux visiteurs sans JavaScript */
+.form-fallback-notice {
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent-gold);
+    background-color: var(--bg-card);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    text-align: center;
+}
+
 .form-success-message {
     max-width: 640px;
     margin: 0 auto;
@@ -1458,7 +1688,9 @@ html.light-mode .news-slide::before {
     background: transparent;
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
-    padding: 0.6rem 1.2rem;
+    /* Padding vertical porté à 0.8rem pour atteindre 44 px de hauteur tactile. */
+    padding: 0.8rem 1.2rem;
+    min-height: 44px;
     border-radius: 30px;
     cursor: pointer;
     font-family: var(--font-body);
@@ -1540,13 +1772,22 @@ html.light-mode .news-slide::before {
     text-align: center;
 }
 
-/* En mode clair, le footer reste sombre pour le contraste */
+/* Le pied de page reste sombre même en thème clair. Il faut donc y rétablir
+   les couleurs de texte du thème sombre : sinon l'encre brune (--text-muted
+   clair) et l'or foncé (--accent-gold clair) se retrouvent sur fond noir, à
+   3,01:1 et 2,93:1 — sous le seuil. On surcharge les jetons localement plutôt
+   que chaque règle de couleur une par une. */
 html.light-mode .footer-container {
+    --text-muted: #A39B8C;        /* 6,49:1 sur --bg-footer */
+    --accent-gold: #C9A84C;       /* 7,82:1 sur --bg-footer */
+    --accent-gold-hover: #E3C268;
+    --border-color: #2A2A2A;
     border-top-color: #2A2A2A;
 }
-html.light-mode .footer-line { color: #888; }
-html.light-mode .footer-link { color: #888; }
-html.light-mode .footer-link:hover { color: var(--accent-gold); }
+/* Les trois règles qui codaient `color: #888` en dur ici sont supprimées :
+   elles écrasaient les jetons ci-dessus, dupliquaient l'information et
+   laissaient .footer-copyright sans correctif. Tout passe désormais par
+   --text-muted et --accent-gold surchargés sur le conteneur. */
 
 .footer-content {
     display: flex;
@@ -1561,10 +1802,18 @@ html.light-mode .footer-link:hover { color: var(--accent-gold); }
     margin-bottom: 0;
 }
 
+/* Liens du pied de page : cibles « en ligne » au sens de WCAG 2.5.8, donc
+   dispensées du minimum de 44 px. Le padding les porte de 16 à 32 px, au-delà
+   du seuil AA de 24 px. Les pousser jusqu'à 44 px a été essayé puis écarté :
+   le padding se cumulait au `gap` du conteneur et rendait l'interligne du
+   pied de page irrégulier (36 px puis 59 px), ce qui se voyait comme un
+   défaut. Le parcours de contact principal reste le formulaire dédié. */
 .footer-link {
     color: var(--text-muted);
     border-bottom: 1px solid transparent;
     transition: var(--transition-fast);
+    display: inline-block;
+    padding: 0.25rem 0;
 }
 
 .footer-link:hover {
@@ -1579,12 +1828,15 @@ html.light-mode .footer-link:hover { color: var(--accent-gold); }
 
 
 /* --- COMPORTEMENT D'ANIMATION (SCROLL REVEAL) --- */
-.reveal-item,
-.history-card,
-.about-block {
+/* Les éléments ne sont masqués QUE si le JS est actif (classe .js posée par le
+   script inline du <head>). Sans JS, ou si ce script échoue, le contenu reste
+   visible : le site ne peut jamais s'afficher vide. */
+html.js .reveal-item,
+html.js .history-card,
+html.js .about-block {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: opacity, transform;
 }
@@ -1676,11 +1928,9 @@ html.light-mode .footer-link:hover { color: var(--accent-gold); }
         display: flex;
     }
 
-    .theme-toggle {
-        width: 32px;
-        height: 32px;
-    }
-    
+    /* Pas de réduction sur mobile : c'est précisément le contexte où la
+       cible tactile doit rester à 44 px. */
+
     .hero-title {
         font-size: 3rem;
     }
@@ -1728,7 +1978,7 @@ html.light-mode .footer-link:hover { color: var(--accent-gold); }
     }
     
     .hero-supratitle {
-        font-size: 0.7rem;
+        font-size: 0.75rem;   /* 12px : plancher de lisibilité */
         letter-spacing: 0.2em;
     }
     

@@ -5,10 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualités & Travaux — La Parole</title>
     <meta name="description" content="Toutes les publications, réflexions maçonniques et événements de la Loge La Parole et du GODF.">
+
+    <!-- Applique le thème et la classe .js AVANT le premier rendu : évite le flash
+         de thème clair/sombre et garde le contenu visible si le JS est indisponible. -->
+    <script>
+        (function () {
+            var el = document.documentElement;
+            el.classList.add('js');
+            // Le thème clair est le défaut : le site est fait de textes longs, que
+            // l'on lit plus confortablement en encre sombre sur fond parchemin.
+            // Seul un choix explicite « sombre » déjà mémorisé y échappe.
+            try {
+                if (localStorage.getItem('laParoleTheme') !== 'dark') {
+                    el.classList.add('light-mode');
+                }
+            } catch (e) {
+                el.classList.add('light-mode'); // stockage bloqué : on garde le défaut
+            }
+        })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Icônes & référencement -->
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <link rel="canonical" href="https://leolinfondjo.github.io/LA-PAROLE/actualites.html">
+    <meta name="theme-color" content="#F5F0E8">
+
+    <!-- Aperçu lors des partages (WhatsApp, Facebook, LinkedIn…) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="La Parole — Loge n° 5385 (GODF)">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="Actualités & Travaux — La Parole">
+    <meta property="og:description" content="Toutes nos publications, réflexions maçonniques et événements de la Loge La Parole et du GODF.">
+    <meta property="og:url" content="https://leolinfondjo.github.io/LA-PAROLE/actualites.html">
+    <meta property="og:image" content="https://leolinfondjo.github.io/LA-PAROLE/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 
@@ -16,7 +54,7 @@
     <header class="navbar-container" id="main-header">
         <div class="navbar-content">
             <a href="index.html" class="nav-logo" id="logo-link">
-                <img src="assets/logo-loge.png" alt="Sceau de la Respectable Loge La Parole" class="nav-logo-img">
+                <img src="assets/logo-loge.webp" alt="Sceau de la Respectable Loge La Parole" class="nav-logo-img" width="56" height="56" decoding="async">
                 <div class="nav-logo-text">
                     <span class="logo-title">La Parole</span>
                     <span class="logo-subtitle">GODF · n° 5385</span>
@@ -61,7 +99,7 @@
     </header>
 
     <!-- Menu Drawer Mobile -->
-    <div class="mobile-drawer" id="mobile-menu-drawer" aria-hidden="true">
+    <div class="mobile-drawer" id="mobile-menu-drawer" aria-hidden="true" inert>
         <nav class="nav-menu-mobile" aria-label="Navigation mobile">
             <a href="index.html#welcome" class="mobile-nav-link">Accueil</a>
             <a href="index.html#about" class="mobile-nav-link">À propos</a>
@@ -83,21 +121,21 @@
         </section>
 
         <section class="blog-section container reveal-group">
-            <div class="blog-filters reveal-item">
-                <button class="filter-btn active" data-filter="all">Toutes</button>
-                <button class="filter-btn" data-filter="actualites">Actualités GODF / La Parole</button>
-                <button class="filter-btn" data-filter="reflexions">Réflexions Maçonniques</button>
-                <button class="filter-btn" data-filter="evenements">Événements</button>
+            <div class="blog-filters reveal-item" role="group" aria-label="Filtrer les publications par catégorie">
+                <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">Toutes</button>
+                <button type="button" class="filter-btn" data-filter="actualites" aria-pressed="false">Actualités GODF / La Parole</button>
+                <button type="button" class="filter-btn" data-filter="reflexions" aria-pressed="false">Réflexions Maçonniques</button>
+                <button type="button" class="filter-btn" data-filter="evenements" aria-pressed="false">Événements</button>
             </div>
 
             <div class="blog-grid reveal-item">
                 <!-- Article 1 -->
                 <article class="blog-card" data-category="actualites">
                     <a href="presentation.html" class="blog-card-link">
-                        <div class="blog-card-image" style="background-image: url('assets/hero-bg.png');"></div>
+                        <div class="blog-card-image" style="background-image: url('assets/hero-bg.webp');"></div>
                         <div class="blog-card-content">
                             <span class="blog-category">Actualités GODF / La Parole</span>
-                            <h3 class="blog-title">Le mot de bienvenue du Vénérable Maître</h3>
+                            <h2 class="blog-title">Le mot de bienvenue du Vénérable Maître</h2>
                             <p class="blog-excerpt">Découvrez la présentation officielle de notre Loge et les valeurs qui nous animent au quotidien.</p>
                             <span class="blog-readmore">Lire l'article ↗</span>
                         </div>
@@ -107,10 +145,10 @@
                 <!-- Article 2 -->
                 <article class="blog-card" data-category="reflexions">
                     <a href="https://godf.org/qui-sommes-nous/publications/questions-a-letude-des-loges/" target="_blank" rel="noopener" class="blog-card-link">
-                        <div class="blog-card-image" style="background-image: url('assets/filigrane-sec4.png');"></div>
+                        <div class="blog-card-image" style="background-image: url('assets/filigrane-sec4.webp');"></div>
                         <div class="blog-card-content">
                             <span class="blog-category">Réflexions Maçonniques</span>
-                            <h3 class="blog-title">Questions à l'étude : Synthèses 2024-2025</h3>
+                            <h2 class="blog-title">Questions à l'étude : Synthèses 2024-2025</h2>
                             <p class="blog-excerpt">Réponses des loges du GODF aux grandes questions de société : laïcité, colonialisme, émotion et raison, construction européenne.</p>
                             <span class="blog-readmore">Voir sur godf.org ↗</span>
                         </div>
@@ -120,10 +158,10 @@
                 <!-- Article 3 -->
                 <article class="blog-card" data-category="evenements">
                     <a href="convent-2026.html" class="blog-card-link">
-                        <div class="blog-card-image" style="background-image: url('assets/filigrane-sec2.png');"></div>
+                        <div class="blog-card-image" style="background-image: url('assets/filigrane-sec2.webp');"></div>
                         <div class="blog-card-content">
                             <span class="blog-category">Événements</span>
-                            <h3 class="blog-title">Convent 2026 du Grand Orient de France</h3>
+                            <h2 class="blog-title">Convent 2026 du Grand Orient de France</h2>
                             <p class="blog-excerpt">Du 26 au 29 août 2026, la ville de Bordeaux accueille le rassemblement majeur de notre obédience. Découvrez le programme.</p>
                             <span class="blog-readmore">Lire l'article ↗</span>
                         </div>
@@ -137,7 +175,7 @@
     <footer class="footer-container">
         <div class="container footer-content">
             <div class="footer-logo-wrap">
-                <img src="assets/logo-loge.png" alt="Sceau de la Respectable Loge La Parole" class="footer-logo-img">
+                <img src="assets/logo-loge.webp" alt="Sceau de la Respectable Loge La Parole" class="footer-logo-img" width="56" height="56" loading="lazy" decoding="async">
             </div>
             <p class="footer-line">La Respectable Loge La Parole · Loge n° 5385</p>
             <p class="footer-line">Grand Orient de France · Orient de Yaoundé, Cameroun</p>
